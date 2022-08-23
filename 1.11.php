@@ -17,7 +17,7 @@ for ($i = 1; $i < $num; $i++) {
     if ($i % $sumNum == 0) {
         echo "$i\n";
     }
-    
+
     $sumNum = 0;
 
 
