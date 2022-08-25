@@ -1,25 +1,43 @@
 <?php
 /*Найти все четные четырехзначные числа, цифры которых следуют в порядке возрастания или убывания.*/
 
-echo "Четные четырехзначные числа в порядке возрастания\n";
-for ($i = 1000; $i < 10000; $i++)
-{
-    $firstNum = ($i - ($i % 1000)) / 1000;
-    $secondNum = (($i % 1000) - ($i % 100)) / 100;
-    $thirdNum = (($i % 100) - $i % 10) / 10;
-    $lastNum = $i % 10;
-    if (($i % 2 == 0) && ($firstNum < $secondNum) && ($secondNum < $thirdNum) && ($thirdNum < $lastNum)) {
-        echo "$i \n";
+for ($i = 1000; $i < 9999; $i += 2) {
+    $num = $i;
+    $flag = true;
+    while ($num != 0) {
+        $lastNum = $num % 10;
+        $num = intdiv($num, 10);
+
+        $numCheck = $num;
+        while ($numCheck != 0) {
+            $lastNumTwo = $numCheck % 10;
+            if ($lastNum <= $lastNumTwo) {
+                $flag = false;
+            }
+            $numCheck = intdiv($numCheck, 10);
+        }
     }
-}
-echo "Четные четырехзначные числа в порядке убывания\n";
-for ($i = 10000; $i > 999; $i--)
-{
-    $firstNum = ($i - ($i % 1000)) / 1000;
-    $secondNum = (($i % 1000) - ($i % 100)) / 100;
-    $thirdNum = (($i % 100) - $i % 10) / 10;
-    $lastNum = $i % 10;
-    if (($i % 2 == 0) && ($firstNum > $secondNum) && ($secondNum > $thirdNum) && ($thirdNum > $lastNum)) {
-        echo "$i \n";
+    $d = $i;
+    $numTwo = $i;
+    $flagTwo = true;
+    while ($numTwo != 0) {
+        $lastNum = $numTwo % 10;
+        $numTwo = intdiv($numTwo, 10);
+
+        $numCheckRev = $numTwo;
+        while ($numCheckRev != 0) {
+            $lastNumTwo = $numCheckRev % 10;
+            if ($lastNum >= $lastNumTwo) {
+                $flagTwo = false;
+            }
+            $numCheckRev = intdiv($numCheckRev, 10);
+        }
+    }
+    if ($flag) {
+        echo "$i\n";
+
+    }
+    if($flagTwo){
+        echo "$d\n";
     }
 }
