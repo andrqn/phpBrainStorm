@@ -1,16 +1,41 @@
 <?php
+
 /*Получить  все  четырехзначные  числа,  в  записи  которых  встречаются только цифры 0,2,3,7*/
-for ($i = 1000; $i < 10000; $i++)
-{
-    $firstNum = ($i - ($i % 1000)) / 1000;
-    $secondNum = (($i % 1000) - ($i % 100)) / 100;
-    $thirdNum = (($i % 100) - $i % 10) / 10;
-    $lastNum = $i % 10;
-    if ((($firstNum == 0) || ($firstNum == 2) || ($firstNum == 3) || ($firstNum == 7))&&
-        (($secondNum == 0) || ($secondNum == 2) || ($secondNum == 3) || ($secondNum == 7))&&
-        (($thirdNum == 0) || ($thirdNum == 2) || ($thirdNum == 3) || ($thirdNum == 7))&&
-        (($lastNum == 0) || ($lastNum == 2) || ($lastNum == 3) || ($lastNum == 7)))
-    {
-        echo "$i \n";
+$countZero = 0;
+$countTwo = 0;
+$countThree = 0;
+$countSeven = 0;
+$lastNum = 0;
+for ($i = 1000; $i < 10000; $i++) {
+    $num = $i;
+
+    while ($num != 0) {
+        $lastNum = $num % 10;
+        if ($lastNum == 0) {
+            $countZero++;
+        }
+        if ($lastNum == 2) {
+            $countTwo++;
+        }
+        if ($lastNum == 3) {
+            $countThree++;
+        }
+        if ($lastNum == 7) {
+            $countSeven++;
+        }
+
+        $num = intdiv($num, 10);
+    }
+    if (($countZero == 1) && ($countTwo == 1) && ($countThree == 1) && ($countSeven == 1)) {
+        echo "$i\n";
+        $countZero = 0;
+        $countTwo = 0;
+        $countThree = 0;
+        $countSeven = 0;
+    } else {
+        $countZero = 0;
+        $countTwo = 0;
+        $countThree = 0;
+        $countSeven = 0;
     }
 }
