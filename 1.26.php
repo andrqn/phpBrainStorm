@@ -11,8 +11,7 @@ for ($i = $numStart; $i < $numStop; $i++)
     for ($j = 1; $j < $num; $j++)
     {
         if ($i % $j == 0) {
-            $sum += $j;
-            echo "$sum\n";
+            $sum += $j;          
         }
     }
     if ($sum >= $max) {
