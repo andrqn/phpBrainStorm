@@ -12,5 +12,5 @@ while ($numOne != $numTwo) {
         $numTwo-= $numOne;
     }
 }
-$nod=($numFirst*$numSecond)/$numTwo;
-echo $nod;
+$nok=($numFirst*$numSecond)/$numTwo;
+echo $nok;
