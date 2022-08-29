@@ -12,7 +12,7 @@ for($i=0;$i<count($array);$i++)
     $countOne=0;
     $countThree=0;
     $countEight=0;
-    for($j=0;$j<count($array[$i])-2;$j++)
+    for($j=0;$j<count($array[$i]);$j++)
     {
         $num = $array[$i][$j];
 
